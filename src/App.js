@@ -1,5 +1,9 @@
 import "./app.css";
 import "antd/dist/antd.css";
+import TitleTest from "./components/TitleTest";
+import TableTest from "./components/TableTest";
+
+
 
 const App = () => {
   return (
@@ -52,6 +56,10 @@ const App = () => {
         </li>
       </ol>
       <i>Estimate time: 1h</i>
+
+      <TitleTest/>
+      <TableTest/>
+      
     </div>
   );
 };
