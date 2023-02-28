@@ -9,7 +9,7 @@ export const dataSource = [
       key: "2",
       name: "John",
       email: "email@mock.com",
-      city: "La isla",
+      city: "Cadiz",
    },
 ];
 
