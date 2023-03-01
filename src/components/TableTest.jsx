@@ -57,7 +57,7 @@ const TableTest = () => {
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.name.includes(value),
-         sorter: (a, b) => a.name - b.name,
+         sorter: (a, b) => a.name > b.name ? 1 : -1,
       },
       {
          title: "Email",
@@ -72,6 +72,7 @@ const TableTest = () => {
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.email.includes(value),
+         sorter: (a, b) => a.email > b.email ? 1 : -1,
       },
       {
          title: "City",
@@ -86,6 +87,7 @@ const TableTest = () => {
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.city.includes(value),
+         sorter: (a, b) => a.city > b.city ? 1 : -1,
       },
    ];
 
