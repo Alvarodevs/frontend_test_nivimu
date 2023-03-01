@@ -1,9 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { initialState } from "../../helpers";
-import { fetchUsers } from "../../helpers";
+import fetchUsers from "../../services/fetchUsers";
+import postUser from "../../services/postUser";
 
 export const getUsers = createAsyncThunk("users/fetchGetUsers", async () => {
    const response = await fetchUsers();
+   return response;
+});
+
+export const postNewUser = createAsyncThunk("users/postUser", async (body) => {
+   const response = await postUser(body);
    return response;
 });
 
@@ -13,11 +19,11 @@ export const usersSlice = createSlice({
    reducers: {
    },
    extraReducers: (builder) => {
+      //GET users
       builder.addCase(getUsers.pending, (state, action) => {
          state.status = "loading";
       });
       builder.addCase(getUsers.fulfilled, (state, action) => {
-         console.log(action.payload);
          const usersData = action.payload.map((user) => ({
             id: user.id,
             name: user.name,
@@ -30,11 +36,20 @@ export const usersSlice = createSlice({
       builder.addCase(getUsers.rejected, (state, action) => {
          state.status = "ko";
       });
+      //POST user
+      builder.addCase(postNewUser.pending, (state, action) => {
+         state.status = "loading";
+      });
+      builder.addCase(postNewUser.fulfilled, (state, action) => {
+         state.users.unshift(action.payload);
+         state.status = "ok";
+      });
+      builder.addCase(postNewUser.rejected, (state, action) => {
+         state.status = "ko";
+      });
    },
 });
 
-// Action creators are generated for each case reducer function
-export const { sortName } = usersSlice.actions
 
 export const selectUsers = (state) => state.users.users;
 export const selectStatus = (state) => state.users.status;

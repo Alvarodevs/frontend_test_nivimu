@@ -14,46 +14,23 @@ import {
 import { Table } from "antd";
 import Spinner from "./Spinner";
 
-export const columns = [
-   {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-   },
-   {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-   },
-   {
-      title: "City",
-      dataIndex: "city",
-      key: "city",
-   },
-];
-
 const TableTest = () => {
    const users = useSelector(selectUsers);
    const appState = useSelector(selectStatus);
    const dispatch = useDispatch();
-
+   //console.log(users)
    const columns = [
-      {
-         title: "ID",
-         dataIndex: "id",
-         key: "id",
-         sorter: (a, b) => a.id - b.id,
-      },
       {
          title: "Name",
          dataIndex: "name",
          key: "name",
-         filters: users.map((user) => {
+         width: 200,
+         filters: users ? users.map((user) => {
             return {
                text: user.name,
                value: user.name,
             };
-         }),
+         }) : null,
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.name.includes(value),
@@ -63,12 +40,13 @@ const TableTest = () => {
          title: "Email",
          dataIndex: "email",
          key: "email",
-         filters: users.map((user) => {
+         width: 100,
+         filters: users ? users.map((user) => {
             return {
                text: user.email,
                value: user.email,
             };
-         }),
+         }) : null,
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.email.includes(value),
@@ -78,12 +56,13 @@ const TableTest = () => {
          title: "City",
          dataIndex: "city",
          key: "city",
-         filters: users.map((user) => {
+         width: 100,
+         filters: users ? users.map((user) => {
             return {
                text: user.city,
                value: user.city,
             };
-         }),
+         }) : null,
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.city.includes(value),
@@ -93,7 +72,7 @@ const TableTest = () => {
 
    useEffect(() => {
       dispatch(getUsers());
-   }, [dispatch]);
+   }, []);
 
    return (
       <>
@@ -103,6 +82,7 @@ const TableTest = () => {
             <Table
                dataSource={users}
                columns={columns}
+               size={'middle'}
                pagination={{ pageSize: 5 }}
             />
          )}

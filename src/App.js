@@ -2,7 +2,8 @@ import "./app.css";
 import "antd/dist/antd.css";
 import TitleTest from "./components/TitleTest";
 import TableTest from "./components/TableTest";
-
+import ButtonAdd from "./components/ButtonAdd";
+import FormNewUser from "./components/FormNewUser";
 
 
 const App = () => {
@@ -58,6 +59,8 @@ const App = () => {
       <i>Estimate time: 1h</i>
 
       <TitleTest/>
+      <ButtonAdd/>
+      {/* FormNewUser/> */}
       <TableTest/>
       
     </div>
