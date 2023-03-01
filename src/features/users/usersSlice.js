@@ -11,7 +11,6 @@ export const usersSlice = createSlice({
    name: "users",
    initialState,
    reducers: {
-      
    },
    extraReducers: (builder) => {
       builder.addCase(getUsers.pending, (state, action) => {
@@ -35,6 +34,8 @@ export const usersSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
+export const { sortName } = usersSlice.actions
+
 export const selectUsers = (state) => state.users.users;
 export const selectStatus = (state) => state.users.status;
 
