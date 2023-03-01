@@ -14,6 +14,7 @@ const FormNewUser = () => {
 
   const handleSubmit = (values) => {
     dispatch(postNewUser(values))
+    form.resetFields()
   };
 
   return (

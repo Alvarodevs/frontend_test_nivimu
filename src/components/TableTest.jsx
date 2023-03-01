@@ -18,7 +18,7 @@ const TableTest = () => {
    const users = useSelector(selectUsers);
    const appState = useSelector(selectStatus);
    const dispatch = useDispatch();
-   //console.log(users)
+   
    const columns = [
       {
          title: "Name",
