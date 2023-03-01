@@ -19,7 +19,7 @@ export const usersSlice = createSlice({
       builder.addCase(getUsers.fulfilled, (state, action) => {
          console.log(action.payload);
          const usersData = action.payload.map((user) => ({
-            key: user.id,
+            id: user.id,
             name: user.name,
             email: user.email,
             city: user.address.city,

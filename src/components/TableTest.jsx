@@ -39,6 +39,12 @@ const TableTest = () => {
 
    const columns = [
       {
+         title: "ID",
+         dataIndex: "id",
+         key: "id",
+         sorter: (a, b) => a.id - b.id,
+      },
+      {
          title: "Name",
          dataIndex: "name",
          key: "name",
@@ -51,6 +57,7 @@ const TableTest = () => {
          filterMode: "tree",
          filterSearch: true,
          onFilter: (value, record) => record.name.includes(value),
+         sorter: (a, b) => a.name - b.name,
       },
       {
          title: "Email",
